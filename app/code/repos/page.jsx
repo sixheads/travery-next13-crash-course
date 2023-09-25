@@ -3,7 +3,12 @@ import { FaStar, FaCodeBranch, FaEye } from 'react-icons/fa';
 
 async function getRepos() {
   const response = await fetch(
-    'https://api.github.com/users/bradtraversy/repos'
+    'https://api.github.com/users/bradtraversy/repos',
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
 
   // just to simulate a slow response
